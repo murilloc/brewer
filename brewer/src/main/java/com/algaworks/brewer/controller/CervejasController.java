@@ -24,7 +24,7 @@ public class CervejasController {
 	@RequestMapping(value = "/cervejas/novo", method = RequestMethod.POST)
 	public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
-			model.addAttribute("mensagem","Erro de validação"); // Ao fazer o FORWARD atributo mensagem ficará disponível paro o Thymeleaf	
+			model.addAttribute("mensagem","Erro de validação no formulário"); // Ao fazer o FORWARD atributo mensagem ficará disponível paro o Thymeleaf	
 			return "cerveja/CadastroCerveja"; // Utiliza HTTP Forward	
 		}
 				
