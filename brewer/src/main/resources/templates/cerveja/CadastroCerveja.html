@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Brewer</title>
@@ -8,6 +9,8 @@
 	<h1>Thimyleaf is Working!</h1>
 
 	<form method="POST">
+	<span th:text="${mensagem}"></span>
+	<br>
 		<label for="sku">SKU</label> 
 		<input id="sku" type="text" name="sku">		
 		<br> 
