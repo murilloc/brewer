@@ -1,7 +1,5 @@
 package com.algaworks.brewer.controller;
 
-
-
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -17,18 +15,17 @@ import com.algaworks.brewer.model.Cerveja;
 public class CervejasController {
 
 	@RequestMapping("/cervejas/novo") // Metodo default: GET
-	public String novo() {
+	public String novo(Cerveja cerveja) {
 		return "cerveja/CadastroCerveja";
 	}
 
 	@RequestMapping(value = "/cervejas/novo", method = RequestMethod.POST)
 	public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
-			model.addAttribute("mensagem","Erro de validação no formulário"); // Ao fazer o FORWARD atributo mensagem ficará disponível paro o Thymeleaf	
-			return "cerveja/CadastroCerveja"; // Utiliza HTTP Forward	
+			return novo(cerveja);
 		}
-				
-		attributes.addFlashAttribute("mensagem","Cerveja salva com sucesso"); // Ao fazer o REDIRECT atributo mensagem ficará disponível paro o Thymeleaf	
+
+		attributes.addFlashAttribute("mensagem", "Cerveja salva com sucesso"); // Ao fazer o REDIRECT atributo mensagem																				// ficará disponível paro o Thymeleaf
 		return "redirect:/cervejas/novo"; // Utiliza HTTP Redirect
 	}
 

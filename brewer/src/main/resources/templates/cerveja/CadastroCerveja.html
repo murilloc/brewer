@@ -2,24 +2,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Brewer</title>
 </head>
 <body>
-	<h1>Olá, Thymeleaf is Working!</h1>
+	<h1>OlÃ¡, Thymeleaf is Working!</h1>
 
-	<form method="POST">
+<!-- Caso a mensagem de erro precise estar fora do formulÃ¡rio
+	<div th:each="erro: ${#fields.detailedErrors('${cerveja.*}')}">
+			<span th:text="${erro.message}"></span>
+	</div> 
+-->
+
+	<form method="POST" th:object="${cerveja}">
+	
+	<div th:each="erro: ${#fields.detailedErrors()}">
+		<span th:text="${erro.message}"></span>
+	</div>
 	<span th:text="${mensagem}"></span>
+	
 	<br>
 		<label for="sku">SKU</label> 
-		<input id="sku" type="text" name="sku">		
+		<input id="sku" type="text" th:field="*{sku}">		
 		<br> 
 		<label for="nome">Nome </label>
-		<input id="nome" type="text" name="nome">
+		<input id="nome" type="text" th:field="*{nome}">		
 		<br>
 		
-		<label for="descricao">Descrição</label>
-		<input id="descricao" type="text" name="descricao">
+		<label for="descricao">DescriÃ§Ã£o</label>
+		<textarea id="descricao"  th:field="*{descricao}"></textarea>		
 		<br>    
 		<input id="nome" type="submit" value="Salvar">
 	</form>
