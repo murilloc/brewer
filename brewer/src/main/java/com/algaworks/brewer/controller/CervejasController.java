@@ -25,8 +25,14 @@ public class CervejasController {
 			return novo(cerveja);
 		}
 
-		attributes.addFlashAttribute("mensagem", "Cerveja salva com sucesso"); // Ao fazer o REDIRECT atributo mensagem																				// ficará disponível paro o Thymeleaf
+		attributes.addFlashAttribute("mensagem", "Cerveja salva com sucesso"); // Ao fazer o REDIRECT atributo mensagem
+																				// // ficará disponível paro o Thymeleaf
 		return "redirect:/cervejas/novo"; // Utiliza HTTP Redirect
+	}
+
+	@RequestMapping("/cervejas/cadastro")
+	public String cadastro() {
+		return "cerveja/cadastro-produto";
 	}
 
 }

@@ -19,8 +19,7 @@
 	<div th:each="erro: ${#fields.detailedErrors()}">
 		<span th:text="${erro.message}"></span>
 	</div>
-	<span th:text="${mensagem}"></span>
-	
+	<span th:text="${mensagem}"></span>	
 	<br>
 		<label for="sku">SKU</label> 
 		<input id="sku" type="text" th:field="*{sku}">		
