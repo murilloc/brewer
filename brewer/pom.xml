@@ -32,11 +32,13 @@
 
 		<!-- Thymeleaf Layout Dialect -->
 		<thymeleaf-layout-dialect.version>2.0.0</thymeleaf-layout-dialect.version>
-		
+
 		<!-- Logging -->
 		<log4j.version>2.6</log4j.version>
 		<jcl-over-slf4j.version>1.7.21</jcl-over-slf4j.version>
 
+		<!-- JPA / Hibernate -->
+		<hibernate.version>5.1.0.Final</hibernate.version>
 
 	</properties>
 
@@ -73,8 +75,8 @@
 			<scope>compile</scope> <!-- Normalmente não é necessário, pois é o escopo default -->
 			<exclusions>
 				<exclusion>
-				<groupId>commons-loggin</groupId>
-				<artifactId>commons-logging</artifactId>
+					<groupId>commons-loggin</groupId>
+					<artifactId>commons-logging</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -117,7 +119,7 @@
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 			<version>${thymeleaf-layout-dialect.version}</version>
 		</dependency>
-		
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
@@ -139,7 +141,26 @@
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>${jcl-over-slf4j.version}</version>
 		</dependency>
-		
+
+
+		<!-- JPA / Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Hibernate - Java 8 support -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+
+
 
 	</dependencies>
 
