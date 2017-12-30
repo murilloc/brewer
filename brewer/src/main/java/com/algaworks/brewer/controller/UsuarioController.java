@@ -19,7 +19,7 @@ public class UsuarioController {
 		return "usuario/CadastroUsuario";
 	}
 
-	@RequestMapping(value = "/usuario/novo", method = RequestMethod.POST)
+	@RequestMapping(value = "/usuarios/novo", method = RequestMethod.POST)
 	public String cadastrar(@Valid Usuario usuario, BindingResult result, Model model, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			return novo(usuario);
