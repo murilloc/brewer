@@ -24,7 +24,7 @@
 
 		<!-- Flyway -->
 		<flayway-maven-plugin.version>4.0.2</flayway-maven-plugin.version>
-		
+
 		<!-- MySQL Driver -->
 		<mysql-connector-java.version>5.1.45</mysql-connector-java.version>
 
@@ -50,7 +50,10 @@
 		<!-- JPA / Hibernate -->
 		<hibernate.version>5.1.0.Final</hibernate.version>
 
-		
+		<!-- Spring Data JPA -->
+		<spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
+
+
 
 
 	</properties>
@@ -187,9 +190,18 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql-connector-java.version}</version>					   
-			<scope>provided</scope> <!--  Já está na lib do Tomcat -->
+			<version>${mysql-connector-java.version}</version>
+			<scope>provided</scope> <!-- Já está na lib do Tomcat -->
 		</dependency>
+
+		<!-- Spring Data JPA -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data-jpa.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
 
 
 	</dependencies>
