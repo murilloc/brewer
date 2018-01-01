@@ -9,7 +9,7 @@ public enum Origem {
 		this.descricao = descricao;
 	}
 
-	public String getdDescricao() {
+	public String getDescricao() {
 		return descricao;
 	}
 }
