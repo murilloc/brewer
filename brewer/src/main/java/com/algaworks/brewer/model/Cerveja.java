@@ -13,7 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -35,36 +38,49 @@ public class Cerveja implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
-	//@Pattern(regexp = "([a-zA-Z]{2}\\d{4})?", message="SKU deve seguir o padrão XX9999")
 	@SKU
 	@NotBlank(message = "O campo SKU é obrigatório")
 	private String sku;
 
-	@NotBlank(message = "O nome Nome é obrigatório")
+	@NotBlank(message = "O campo Nome é obrigatório")
+	@Size(max = 50, message = "O campo Nome deve conter no máximo 50 caracteres")
 	private String nome;
 
-	@Size(min = 1, max = 50, message = "O campo descrição deve conter entre 1 e 50 caracteres")
+	@NotBlank(message = "O campo Descrição é obrigatório")
+	@Size(max = 50, message = "O campo Descrição deve conter no máximo 50 caracteres")
 	private String descricao;
 
+	@NotNull(message = "O campo Valor é obrigatório")
+	@DecimalMin(value = "0.01", message = "O valor mínimo da cerveja deve ser de R$0,01")
+	@DecimalMax(value = "99999999.99", message = "O valor da cervaje não deve ultrapassar R$9.999.999,99")
 	private BigDecimal valor;
 
+	@NotNull(message = "O campo Teor alcoólico é obrigatório")
 	@Column(name = "teor_alcoolico")
+	@DecimalMax(value = "100", message = "O valor do teor alcoólico deve ser menor que 100")
 	private BigDecimal teorAlcoolico;
 
+	@NotNull(message = "O campo Comissão é obrigatório")
+	@DecimalMax(value = "100", message = "O valor da comissão deve ser menor que 100")
 	private BigDecimal comissao;
 
+	@NotNull(message = "O campo Estoque é obrigatório")
+	@Max(value = 9999, message = "A quantidade de estoque deve ser menor que 9.999")
 	@Column(name = "quantidade_estoque")
 	private Integer quantidadeEstoque;
 
 	/*
 	 * Relacionamentos
 	 */
+	@NotNull(message = "O campo Origem é obrigatório")
 	@Enumerated(EnumType.STRING)
 	private Origem origem;
 
+	@NotNull(message = "O campo Sabor é obrigatório")
 	@Enumerated(EnumType.STRING)
 	private Sabor sabor;
 
+	@NotNull(message = "O campo Estilo é obrigatório")
 	@ManyToOne
 	@JoinColumn(name = "codigo_estilo")
 	private Estilo estilo;
