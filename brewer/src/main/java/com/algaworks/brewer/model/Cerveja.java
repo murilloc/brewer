@@ -35,7 +35,7 @@ public class Cerveja implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
-	//@Pattern(regexp = "([a-zA-Z]{2}\\d{4})?", message="SKU deve seguir o pdrão XX9999")
+	//@Pattern(regexp = "([a-zA-Z]{2}\\d{4})?", message="SKU deve seguir o padrão XX9999")
 	@SKU
 	@NotBlank(message = "O campo SKU é obrigatório")
 	private String sku;
